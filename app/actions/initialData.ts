@@ -26,7 +26,7 @@ const incomeExpenseBarData = {
 	labels: weekDays,
 	datasets: [
 		{
-			label: "Income",
+			label: "income",
 			data: randomNumberGenerator(7)
 		},
 		{

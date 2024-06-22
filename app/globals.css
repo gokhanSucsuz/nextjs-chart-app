@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.crowded {
+    fill: #15803d;
+    cursor: default;
+}
+
+.notCrowded {
+    fill: #2ab85e;
+    cursor: default;
+}
+
+.empty {
+    fill: #26371f;
+}
+
+.notCrowded, .crowded:hover, :focus {
+    outline: none;
+}

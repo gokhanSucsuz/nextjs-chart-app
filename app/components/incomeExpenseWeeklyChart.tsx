@@ -1,18 +1,16 @@
 "use client";
-import { Line } from "react-chartjs-2";
-import Chart from "chart.js";
+import { Bar } from "react-chartjs-2";
+import Chart, { BarElement } from "chart.js";
 import {
 	Chart as ChartJS,
 	CategoryScale,
 	LinearScale,
-	LineElement,
 	Title,
 	Tooltip,
 	Legend,
 	PointElement
 } from "chart.js";
 import { scaleConfig } from "../constants/consts";
-// import { useRef } from "react";
 
 ChartJS.register(
 	CategoryScale,
@@ -21,31 +19,28 @@ ChartJS.register(
 	Legend,
 	Tooltip,
 	Title,
-	LineElement
+	BarElement
 );
 
-const IncomeExpenseLineChart = ({ data }: { data: Chart.ChartData }) => {
-	// const progressRef = useRef<HTMLDivElement | null>(null);
-
+const IncomeExpenseWeeklyChart = ({ data }: { data: Chart.ChartData }) => {
 	return (
 		<>
 			<div style={{ minHeight: "30vh" }}>
 				<div
-					className="p-12 h-90 block bg-slate-400 border border-gray-200 rounded-lg shadow dark:bg-gray-800
+					className="p-9 h-90 block bg-slate-400 border border-gray-200 rounded-lg shadow dark:bg-gray-800
 				 dark:border-gray-700 ">
 					<h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-slate-200">
-						Income & Expense Line Chart
+						Income & Expense Weekly Bar Chart
 					</h5>
 
 					<div
-						// ref={progressRef}
 						style={{ display: "none" }}
 						className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-blue-500 mb-4">
 						<div
 							className="bg-blue-500 h-2.5 rounded-full"
 							style={{ width: "0%" }}></div>
 					</div>
-					<Line
+					<Bar
 						redraw
 						options={{
 							responsive: true,
@@ -57,25 +52,16 @@ const IncomeExpenseLineChart = ({ data }: { data: Chart.ChartData }) => {
 									backgroundColor: "#1f2937",
 									callbacks: {
 										label(tooltipItem): string | string[] | void {
-											return tooltipItem.formattedValue + "-EUR";
+											return (
+												tooltipItem.dataset.label +
+												" " +
+												tooltipItem.formattedValue +
+												"-EUR"
+											);
 										}
 									}
 								}
 							},
-							// animation: {
-							// 	onProgress: (animation) => {
-							// 		if (progressRef.current) {
-							// 			progressRef.current.style.display = "block";
-							// 			progressRef.current.children[0].style.width =
-							// 				(animation.currentStep / animation.numSteps) * 100 + "%";
-							// 		}
-							// 	},
-							// 	onComplete: () => {
-							// 		if (progressRef.current) {
-							// 			progressRef.current.style.display = "none";
-							// 		}
-							// 	}
-							// },
 							...scaleConfig
 						}}
 						data={data}
@@ -86,4 +72,4 @@ const IncomeExpenseLineChart = ({ data }: { data: Chart.ChartData }) => {
 	);
 };
 
-export default IncomeExpenseLineChart;
+export default IncomeExpenseWeeklyChart;

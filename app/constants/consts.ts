@@ -37,7 +37,7 @@ export const scaleConfig = {
 				display: false
 			},
 			ticks: {
-				color: "#fff"
+				color: "#1a5db8"
 			}
 		},
 		y: {
@@ -48,8 +48,22 @@ export const scaleConfig = {
 				display: false
 			},
 			ticks: {
-				color: "#fff"
+				color: "#1a5db8"
 			}
 		}
 	}
 };
+export const colors = [
+	"#0E4CB0",
+	"#B4BCFA",
+	"#FAFAF5",
+	"#D5EDA4",
+	"#F7E872",
+	"#0EB0A8",
+	"#B4D8FA",
+	"#FAF7F5",
+	"#EDD5A4",
+	"#F7A172",
+	"#0EB05C",
+	"#F77281"
+];
