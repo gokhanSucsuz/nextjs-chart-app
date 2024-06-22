@@ -5,10 +5,12 @@ import { ChartDataInterface } from "../interfaces/chartDataInterface";
 import { Collection } from "mongodb";
 import { randomNumberGenerator } from "../utils/randomNumberGenerator";
 import { connectDb, getCollection } from "../utils/dbHelper";
+import Chart from "chart.js";
+import { redirect } from "next/navigation";
 
-const yearlyLineData = {
+const yearlyLineData: Chart.ChartData = {
 	labels: yearlyMonths,
-	dataSets: [
+	datasets: [
 		{
 			label: "sales",
 			data: randomNumberGenerator(12)
@@ -22,7 +24,7 @@ const yearlyLineData = {
 
 const incomeExpenseBarData = {
 	labels: weekDays,
-	dataSets: [
+	datasets: [
 		{
 			label: "Income",
 			data: randomNumberGenerator(7)
@@ -36,7 +38,7 @@ const incomeExpenseBarData = {
 
 const visitorsLineData = {
 	labels: sixMonths,
-	dataSets: [
+	datasets: [
 		{
 			label: "Visitors",
 			data: randomNumberGenerator(6)
@@ -46,7 +48,7 @@ const visitorsLineData = {
 
 const watchStackedData = {
 	labels: sixMonths,
-	dataSets: [
+	datasets: [
 		{
 			label: "Video",
 			data: randomNumberGenerator(6)
@@ -62,7 +64,7 @@ const stockPieData = {
 	labels: Array(10)
 		.fill(0)
 		.map((item, index) => "Category" + index + 1),
-	dataSets: [
+	datasets: [
 		{
 			label: "Product Category",
 			data: randomNumberGenerator(12, 250, 500)
@@ -127,11 +129,16 @@ const productArray = [
 		status: "Danger"
 	}
 ];
+export async function deleteAllData() {
+	await connectDb();
+	const collection: Collection = getCollection("chartData");
+	await collection.deleteMany();
+}
+
 export async function createInitialData() {
 	await connectDb();
-
+	await deleteAllData();
 	const collection: Collection = getCollection("chartData");
-
 	const obj: ChartDataInterface = {
 		incomeExpenseBarData,
 		mostDataCountry,
@@ -142,6 +149,6 @@ export async function createInitialData() {
 		watchStackedData
 	};
 
-	const res = await collection.insertOne(obj);
-	console.log(res);
+	await collection.insertOne(obj);
+	redirect("/");
 }

@@ -26,3 +26,30 @@ export const weekDays: Array<string> = [
 	"Sat",
 	"Sun"
 ];
+export const scaleConfig = {
+	scales: {
+		x: {
+			border: {
+				display: false
+			},
+
+			grid: {
+				display: false
+			},
+			ticks: {
+				color: "#fff"
+			}
+		},
+		y: {
+			border: {
+				display: false
+			},
+			grid: {
+				display: false
+			},
+			ticks: {
+				color: "#fff"
+			}
+		}
+	}
+};

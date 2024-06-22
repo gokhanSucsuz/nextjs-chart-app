@@ -1,11 +1,11 @@
-import { ChartDatasetInterface } from "./chartDatasetBaseInterface";
+import Chart from "chart.js";
 
 export interface ChartDataInterface {
-	yearlyLineData: ChartDatasetInterface;
-	incomeExpenseBarData: ChartDatasetInterface;
-	visitorsLineData: ChartDatasetInterface;
-	watchStackedData: ChartDatasetInterface;
-	stockPieData: ChartDatasetInterface;
-	mostDataCountry: ChartDatasetInterface;
-	mostTenProductData: ChartDatasetInterface;
+	yearlyLineData: Chart.ChartData;
+	incomeExpenseBarData: any;
+	visitorsLineData: any;
+	watchStackedData: any;
+	stockPieData: any;
+	mostDataCountry: any;
+	mostTenProductData: any;
 }
