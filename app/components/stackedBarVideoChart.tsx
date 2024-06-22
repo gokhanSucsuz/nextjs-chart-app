@@ -43,6 +43,7 @@ const StackedBarVideoChart = ({ data }: { data: Chart.ChartData }) => {
 							style={{ width: "0%" }}></div>
 					</div>
 					<Bar
+						redraw
 						options={{
 							responsive: true,
 							plugins: {

@@ -66,7 +66,6 @@ export async function getChartData(): Promise<ChartDataInterface | null> {
 					borderColor: item.label === "Shorts" ? "#a20563" : "#f6005e"
 				};
 			});
-		console.log(chartDataObject.stockPieData.datasets[0].colorIndex[2]);
 		chartDataObject.stockPieData.datasets =
 			chartDataObject.stockPieData.datasets.map((item: any) => {
 				return {

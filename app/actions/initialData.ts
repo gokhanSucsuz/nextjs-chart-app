@@ -1,11 +1,11 @@
 "use server";
 import { sixMonths, weekDays, yearlyMonths } from "../constants/consts";
 import { ChartDataInterface } from "../interfaces/chartDataInterface";
-
 import { Collection } from "mongodb";
 import { randomNumberGenerator } from "../utils/randomNumberGenerator";
 import { connectDb, getCollection } from "../utils/dbHelper";
 import Chart from "chart.js";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 const yearlyLineData: Chart.ChartData = {
@@ -150,5 +150,6 @@ export async function createInitialData() {
 	};
 
 	await collection.insertOne(obj);
+	revalidatePath("/");
 	redirect("/");
 }

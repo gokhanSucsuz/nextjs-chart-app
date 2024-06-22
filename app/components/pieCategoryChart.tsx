@@ -45,6 +45,7 @@ const PieCategoryChart = ({ data }: { data: Chart.ChartData }) => {
 							style={{ width: "0%" }}></div>
 					</div>
 					<Pie
+						redraw
 						options={{
 							responsive: true,
 							plugins: {

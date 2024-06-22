@@ -43,6 +43,7 @@ const VisitorsLineChart = ({ data }: { data: Chart.ChartData }) => {
 							style={{ width: "0%" }}></div>
 					</div>
 					<Line
+						redraw
 						options={{
 							responsive: true,
 							plugins: {

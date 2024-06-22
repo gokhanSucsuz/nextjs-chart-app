@@ -48,34 +48,91 @@ export default async function Home() {
 							<ul
 								role="list"
 								className="divide-y divide-gray-200 dark:divide-gray-700">
-								{chartData?.stockPieData.labels?.map((item, index) => (
-									<li
-										key={index}
-										className={
-											index % 2 === 0
-												? "py-1 sm:py-2 bg-slate-200"
-												: "py-1 sm:py-2"
-										}>
-										<div className="flex items-center">
-											<div className="flex-1 min-w-0 ms-4">
-												<p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-													{item}
-												</p>
+								{chartData?.stockPieData.datasets[0].data?.map(
+									(item, index) => (
+										<li
+											key={index}
+											className={
+												index % 2 === 0
+													? "py-1 sm:py-2 bg-slate-200"
+													: "py-1 sm:py-2"
+											}>
+											<div className="flex items-center">
+												<div className="flex-1 min-w-0 ms-4">
+													<p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+														{item} items
+													</p>
+												</div>
+												<div className="inline-flex  items-center text-base font-semibold text-gray-900 dark:text-white">
+													<span
+														className={`w-96 h-10 m-1 rounded-lg`}
+														style={{
+															backgroundColor: `${colors[index]}`
+														}}></span>
+												</div>
 											</div>
-											<div className="inline-flex  items-center text-base font-semibold text-gray-900 dark:text-white">
-												<span
-													className={`w-96 h-10 m-1 rounded-lg`}
-													style={{
-														backgroundColor: `${colors[index]}`
-													}}></span>
-											</div>
-										</div>
-									</li>
-								))}
+										</li>
+									)
+								)}
 							</ul>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div className="relative overflow-x-auto">
+				<table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+					<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+						<tr>
+							<th scope="col" className="px-6 py-3">
+								Product name
+							</th>
+							<th scope="col" className="px-6 py-3">
+								Category
+							</th>
+							<th scope="col" className="px-6 py-3">
+								Status
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						{chartData?.mostTenProductData.map((item, index) => {
+							return (
+								<tr
+									key={index}
+									className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+									<th
+										scope="row"
+										className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+										{item.productName}
+									</th>
+									<td className="px-6 py-4">{item.category}</td>
+									<td className="px-6 py-4">
+										{item.status === "Success" && (
+											<span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+												Green
+											</span>
+										)}
+										{item.status === "Danger" && (
+											<span className="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
+												Danger
+											</span>
+										)}
+										{item.status === "Warning" && (
+											<span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
+												Warning
+											</span>
+										)}
+										{item.status === "Info" && (
+											<span className="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">
+												Info
+											</span>
+										)}
+									</td>
+								</tr>
+							);
+						})}
+					</tbody>
+				</table>
 			</div>
 		</main>
 	);
