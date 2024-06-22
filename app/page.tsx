@@ -59,12 +59,12 @@ export default async function Home() {
 										<div className="flex items-center">
 											<div className="flex-1 min-w-0 ms-4">
 												<p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-													{}
+													{item}
 												</p>
 											</div>
-											<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+											<div className="inline-flex  items-center text-base font-semibold text-gray-900 dark:text-white">
 												<span
-													className={`w-10 h-10 m-1 rounded-lg`}
+													className={`w-96 h-10 m-1 rounded-lg`}
 													style={{
 														backgroundColor: `${colors[index]}`
 													}}></span>
