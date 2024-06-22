@@ -1,4 +1,4 @@
-const sixMonths: Array<string> = [
+export const sixMonths: Array<string> = [
 	"January",
 	"February",
 	"March",
@@ -7,7 +7,7 @@ const sixMonths: Array<string> = [
 	"June"
 ];
 
-const yearlyMonths = [
+export const yearlyMonths: Array<string> = [
 	...sixMonths,
 	"July",
 	"August",
@@ -17,7 +17,7 @@ const yearlyMonths = [
 	"December"
 ];
 
-const weekDays: Array<string> = [
+export const weekDays: Array<string> = [
 	"Mon",
 	"Tue",
 	"Wed",

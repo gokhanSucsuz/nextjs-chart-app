@@ -1,4 +1,5 @@
-import { Collection, Db, MongoClient, ServerApiVersion } from "mongodb";
+"use server";
+import { Db, MongoClient, ServerApiVersion } from "mongodb";
 
 const uri =
 	"mongodb+srv://admin:admin123@myfreecluster.wn7kmj7.mongodb.net/?retryWrites=true&w=majority&appName=myFreeCluster";
@@ -11,45 +12,39 @@ const client = new MongoClient(uri, {
 });
 
 const dbName = "chartdb";
+let db: Db;
+let isConnected = false;
 
-class DbHelper {
-	db: Db;
-	isConnected: boolean;
-
-	constructor() {
-		this.db = client.db(dbName);
-		this.isConnected = false;
-	}
-
-	async connect() {
-		if (!this.isConnected) {
-			try {
-				await client.connect();
-				this.isConnected = true;
-				console.log("Connection is established!");
-			} catch (error) {
-				console.log("Eror ", error);
-				this.isConnected = false;
-				throw error;
-			}
-		}
-	}
-
-	getCollection(collectionName: string) {
-		return this.db.collection(collectionName);
-	}
-
-	async close() {
-		if (this.isConnected) {
-			try {
-				await client.close();
-				this.isConnected = false;
-				console.log("Connection is closed!");
-			} catch (error) {
-				console.log("Error ", error);
-				throw error;
-			}
+async function connectDb() {
+	if (!isConnected) {
+		try {
+			await client.connect();
+			db = client.db(dbName);
+			isConnected = true;
+			console.log("Bağlantı kuruldu!");
+		} catch (error) {
+			console.log("Hata ", error);
+			isConnected = false;
+			throw error;
 		}
 	}
 }
-export default new DbHelper();
+
+async function closeDb() {
+	if (isConnected) {
+		try {
+			await client.close();
+			isConnected = false;
+			console.log("Bağlantı kapatıldı!");
+		} catch (error) {
+			console.log("Hata ", error);
+			throw error;
+		}
+	}
+}
+
+function getCollection(collectionName: string) {
+	return db.collection(collectionName);
+}
+
+export { connectDb, closeDb, getCollection };
