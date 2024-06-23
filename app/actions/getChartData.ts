@@ -14,10 +14,12 @@ export async function getChartData(): Promise<ChartDataInterface | null> {
 		return null;
 	}
 
-	delete chartDataObj._id;
+	const { _id, ...chartDataObjWithoutId } = chartDataObj;
+
+	console.log(chartDataObjWithoutId);
 
 	const chartDataObject: ChartDataInterface = {
-		...chartDataObj
+		...chartDataObjWithoutId
 	} as ChartDataInterface;
 
 	if (
@@ -44,8 +46,8 @@ export async function getChartData(): Promise<ChartDataInterface | null> {
 					borderColor: item.label === "income" ? "#166534" : "#854d0e"
 				};
 			});
-		chartDataObject.visitorsLineData.datasets =
-			chartDataObject.visitorsLineData.datasets.map(
+		chartDataObjWithoutId.visitorsLineData.datasets =
+			chartDataObjWithoutId.visitorsLineData.datasets.map(
 				(item: { label: string }) => {
 					return {
 						...item,
