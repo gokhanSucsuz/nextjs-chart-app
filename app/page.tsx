@@ -12,21 +12,20 @@ export default async function Home() {
 	const chartData = await getChartData();
 
 	return (
-		<main className="flex min-h-screen flex-col gap-8  p-12 bg-cyan-800">
-			Dashboard For Admins
+		<main className="flex min-h-screen flex-col gap-4 p-3 sm:p-12 bg-cyan-600">
 			<div className="flex items-center">
 				<form className="max-w-sm mx-auto" action={createInitialData}>
 					<button
 						type="submit"
-						className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-						Initial Data Generate
+						className="text-white bg-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 text-xl">
+						New Initial Data Generate
 					</button>
 				</form>
 			</div>
 			<div className="grid grid-cols-1 gap-4">
 				<IncomeExpenseLineChart data={chartData?.yearlyLineData} />
 			</div>
-			<div className="grid grid-cols-3 gap-4">
+			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4">
 				<div>
 					<IncomeExpenseWeeklyChart data={chartData?.incomeExpenseBarData} />
 				</div>
@@ -37,7 +36,7 @@ export default async function Home() {
 					<StackBarData data={chartData?.watchStackedData} />
 				</div>
 			</div>
-			<div className="grid grid-cols-2 gap-4">
+			<div className="grid grid-cols-1 sm:grid-cols-3  gap-4">
 				{/* <div>
 					<WorldMap data={chartData?.mostDataCountry} />
 				</div> */}
@@ -65,7 +64,7 @@ export default async function Home() {
 												</div>
 												<div className="inline-flex  items-center text-base font-semibold text-gray-900 dark:text-white">
 													<span
-														className={`w-96 h-10 m-1 rounded-lg`}
+														className={`w-10 lg:w-32 h-10 m-1 rounded-lg`}
 														style={{
 															backgroundColor: `${colors[index]}`
 														}}></span>
@@ -108,7 +107,7 @@ export default async function Home() {
 										<td className="px-6 py-4">
 											{item.status === "Success" && (
 												<span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-													Green
+													Success
 												</span>
 											)}
 											{item.status === "Danger" && (
