@@ -1,4 +1,4 @@
-demo is here => https://nextjs-chart-41te4rpne-coolpisces-projects.vercel.app/
+demo is here => https://nextjs-chart-app.vercel.app/
 
 
 
