@@ -1,14 +1,16 @@
 "use client";
+import React from "react";
 import { Bar } from "react-chartjs-2";
-import Chart, { BarElement } from "chart.js";
 import {
 	Chart as ChartJS,
 	CategoryScale,
 	LinearScale,
+	BarElement,
 	Title,
 	Tooltip,
 	Legend,
-	PointElement
+	PointElement,
+	ChartData
 } from "chart.js";
 import { scaleConfig } from "../constants/consts";
 
@@ -22,7 +24,7 @@ ChartJS.register(
 	BarElement
 );
 
-const IncomeExpenseWeeklyChart = ({ data }: { data: Chart.ChartData }) => {
+const IncomeExpenseWeeklyChart = ({ data }: { data: ChartData<"bar"> }) => {
 	return (
 		<>
 			<div style={{ minHeight: "30vh" }}>

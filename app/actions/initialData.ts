@@ -73,16 +73,35 @@ const stockPieData = {
 };
 
 const mostDataCountry = {
-	tr: 80,
-	cn: 73,
-	ru: 55,
-	de: 48,
-	in: 42,
-	gr: 35,
-	fr: 61,
-	bg: 19,
-	gb: 70,
-	it: 59
+	labels: Object.keys({
+		tr: 80,
+		cn: 73,
+		ru: 55,
+		de: 48,
+		in: 42,
+		gr: 35,
+		fr: 61,
+		bg: 19,
+		gb: 70,
+		it: 59
+	}),
+	datasets: [
+		{
+			label: "Countries",
+			data: Object.values({
+				tr: 80,
+				cn: 73,
+				ru: 55,
+				de: 48,
+				in: 42,
+				gr: 35,
+				fr: 61,
+				bg: 19,
+				gb: 70,
+				it: 59
+			})
+		}
+	]
 };
 
 const productArray = [
@@ -129,6 +148,7 @@ const productArray = [
 		status: "Danger"
 	}
 ];
+
 export async function deleteAllData() {
 	await connectDb();
 	const collection: Collection = getCollection("chartData");
@@ -143,7 +163,6 @@ export async function createInitialData() {
 		incomeExpenseBarData,
 		mostDataCountry,
 		yearlyLineData,
-		mostTenProductData: productArray,
 		stockPieData,
 		visitorsLineData,
 		watchStackedData

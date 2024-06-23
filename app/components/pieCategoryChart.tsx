@@ -1,15 +1,16 @@
 "use client";
+import React from "react";
 import { Pie } from "react-chartjs-2";
-import Chart, { BarElement } from "chart.js";
 import {
 	Chart as ChartJS,
 	CategoryScale,
 	LinearScale,
+	LineElement,
 	Title,
 	Tooltip,
 	Legend,
-	Filler,
 	PointElement,
+	ChartData,
 	ArcElement
 } from "chart.js";
 import { scaleConfig } from "../constants/consts";
@@ -21,12 +22,11 @@ ChartJS.register(
 	Legend,
 	Tooltip,
 	Title,
-	BarElement,
-	Filler,
+	LineElement,
 	ArcElement
 );
 
-const PieCategoryChart = ({ data }: { data: Chart.ChartData }) => {
+const PieCategoryChart = ({ data }: { data: ChartData<"pie"> }) => {
 	return (
 		<>
 			<div style={{ minHeight: "30vh" }}>

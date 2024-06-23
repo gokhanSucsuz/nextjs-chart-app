@@ -5,8 +5,8 @@ import IncomeExpenseWeeklyChart from "./components/incomeExpenseWeeklyChart";
 import PieCategoryChart from "./components/pieCategoryChart";
 import StackBarData from "./components/stackedBarVideoChart";
 import VisitorsLineChart from "./components/visitorsLineChart";
-import WorldMap from "./components/worldMap";
-import { colors } from "./constants/consts";
+// import WorldMap from "./components/worldMap";
+import { colors, productArray } from "./constants/consts";
 
 export default async function Home() {
 	const chartData = await getChartData();
@@ -38,9 +38,9 @@ export default async function Home() {
 				</div>
 			</div>
 			<div className="grid grid-cols-2 gap-4">
-				<div>
+				{/* <div>
 					<WorldMap data={chartData?.mostDataCountry} />
-				</div>
+				</div> */}
 				<div className="border-green-600 rounded-lg border-4">
 					<PieCategoryChart data={chartData?.stockPieData} />
 					<div className="w-full p-1 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
@@ -78,61 +78,61 @@ export default async function Home() {
 						</div>
 					</div>
 				</div>
-			</div>
-			<div className="relative overflow-x-auto">
-				<table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-					<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-						<tr>
-							<th scope="col" className="px-6 py-3">
-								Product name
-							</th>
-							<th scope="col" className="px-6 py-3">
-								Category
-							</th>
-							<th scope="col" className="px-6 py-3">
-								Status
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						{chartData?.mostTenProductData.map((item, index) => {
-							return (
-								<tr
-									key={index}
-									className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-									<th
-										scope="row"
-										className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-										{item.productName}
-									</th>
-									<td className="px-6 py-4">{item.category}</td>
-									<td className="px-6 py-4">
-										{item.status === "Success" && (
-											<span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-												Green
-											</span>
-										)}
-										{item.status === "Danger" && (
-											<span className="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
-												Danger
-											</span>
-										)}
-										{item.status === "Warning" && (
-											<span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
-												Warning
-											</span>
-										)}
-										{item.status === "Info" && (
-											<span className="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">
-												Info
-											</span>
-										)}
-									</td>
-								</tr>
-							);
-						})}
-					</tbody>
-				</table>
+				<div className="relative overflow-x-auto">
+					<table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+						<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+							<tr>
+								<th scope="col" className="px-6 py-3">
+									Product name
+								</th>
+								<th scope="col" className="px-6 py-3">
+									Category
+								</th>
+								<th scope="col" className="px-6 py-3">
+									Status
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							{productArray.map((item, index) => {
+								return (
+									<tr
+										key={index}
+										className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+										<th
+											scope="row"
+											className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+											{item.productName}
+										</th>
+										<td className="px-6 py-4">{item.category}</td>
+										<td className="px-6 py-4">
+											{item.status === "Success" && (
+												<span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+													Green
+												</span>
+											)}
+											{item.status === "Danger" && (
+												<span className="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
+													Danger
+												</span>
+											)}
+											{item.status === "Warning" && (
+												<span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
+													Warning
+												</span>
+											)}
+											{item.status === "Info" && (
+												<span className="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">
+													Info
+												</span>
+											)}
+										</td>
+									</tr>
+								);
+							})}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</main>
 	);

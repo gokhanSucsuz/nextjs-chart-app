@@ -7,5 +7,4 @@ export interface ChartDataInterface {
 	watchStackedData: Chart.ChartData;
 	stockPieData: Chart.ChartData;
 	mostDataCountry: Chart.ChartData;
-	mostTenProductData: Chart.ChartData;
 }

@@ -1,10 +1,11 @@
 "use client";
 import { Line } from "react-chartjs-2";
-import Chart, { BarElement } from "chart.js";
+import { BarElement } from "chart.js";
 import {
 	Chart as ChartJS,
 	CategoryScale,
 	LinearScale,
+	ChartData,
 	Title,
 	Tooltip,
 	Legend,
@@ -24,7 +25,7 @@ ChartJS.register(
 	Filler
 );
 
-const VisitorsLineChart = ({ data }: { data: Chart.ChartData }) => {
+const VisitorsLineChart = ({ data }: { data: ChartData<"line"> }) => {
 	return (
 		<>
 			<div style={{ minHeight: "30vh" }}>

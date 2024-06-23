@@ -1,6 +1,6 @@
 "use client";
 import { Bar } from "react-chartjs-2";
-import Chart, { BarElement } from "chart.js";
+import { BarElement } from "chart.js";
 import {
 	Chart as ChartJS,
 	CategoryScale,
@@ -9,7 +9,8 @@ import {
 	Tooltip,
 	Legend,
 	Filler,
-	PointElement
+	PointElement,
+	ChartData
 } from "chart.js";
 import { scaleConfig } from "../constants/consts";
 
@@ -24,7 +25,7 @@ ChartJS.register(
 	Filler
 );
 
-const StackedBarVideoChart = ({ data }: { data: Chart.ChartData }) => {
+const StackedBarVideoChart = ({ data }: { data: ChartData<"bar"> }) => {
 	return (
 		<>
 			<div style={{ minHeight: "30vh" }}>
