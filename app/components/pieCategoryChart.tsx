@@ -11,7 +11,8 @@ import {
 	Legend,
 	PointElement,
 	ChartData,
-	ArcElement
+	ArcElement,
+	Point
 } from "chart.js";
 import { scaleConfig } from "../constants/consts";
 
@@ -26,7 +27,11 @@ ChartJS.register(
 	ArcElement
 );
 
-const PieCategoryChart = ({ data }: { data: ChartData<"pie"> }) => {
+interface PieCategoryChartProps {
+	data: ChartData<"pie", (number | Point | null)[], unknown> | any;
+}
+
+const PieCategoryChart: React.FC<PieCategoryChartProps> = ({ data }) => {
 	return (
 		<>
 			<div style={{ minHeight: "30vh" }}>

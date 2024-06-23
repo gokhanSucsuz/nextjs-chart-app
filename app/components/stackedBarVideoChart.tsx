@@ -10,7 +10,8 @@ import {
 	Legend,
 	Filler,
 	PointElement,
-	ChartData
+	ChartData,
+	Point
 } from "chart.js";
 import { scaleConfig } from "../constants/consts";
 
@@ -25,7 +26,13 @@ ChartJS.register(
 	Filler
 );
 
-const StackedBarVideoChart = ({ data }: { data: ChartData<"bar"> }) => {
+interface StackedBarVideoChartProps {
+	data: ChartData<"pie", (number | Point | null)[], unknown> | any;
+}
+
+const StackedBarVideoChart: React.FC<StackedBarVideoChartProps> = ({
+	data
+}) => {
 	return (
 		<>
 			<div style={{ minHeight: "30vh" }}>

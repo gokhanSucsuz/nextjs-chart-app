@@ -10,7 +10,8 @@ import {
 	Tooltip,
 	Legend,
 	Filler,
-	PointElement
+	PointElement,
+	Point
 } from "chart.js";
 import { scaleConfig } from "../constants/consts";
 
@@ -25,7 +26,11 @@ ChartJS.register(
 	Filler
 );
 
-const VisitorsLineChart = ({ data }: { data: ChartData<"line"> }) => {
+interface VisitorsLineChartProps {
+	data: ChartData<"pie", (number | Point | null)[], unknown> | any;
+}
+
+const VisitorsLineChart: React.FC<VisitorsLineChartProps> = ({ data }) => {
 	return (
 		<>
 			<div style={{ minHeight: "30vh" }}>

@@ -10,7 +10,8 @@ import {
 	Tooltip,
 	Legend,
 	PointElement,
-	ChartData
+	ChartData,
+	Point
 } from "chart.js";
 import { scaleConfig } from "../constants/consts";
 
@@ -24,7 +25,13 @@ ChartJS.register(
 	BarElement
 );
 
-const IncomeExpenseWeeklyChart = ({ data }: { data: ChartData<"bar"> }) => {
+interface IncomeExpenseWeeklyChartProps {
+	data: ChartData<"bar", (number | Point | null)[], unknown> | any;
+}
+
+const IncomeExpenseWeeklyChart: React.FC<IncomeExpenseWeeklyChartProps> = ({
+	data
+}) => {
 	return (
 		<>
 			<div style={{ minHeight: "30vh" }}>

@@ -10,7 +10,8 @@ import {
 	Tooltip,
 	Legend,
 	PointElement,
-	ChartData
+	ChartData,
+	Point
 } from "chart.js";
 import { scaleConfig } from "../constants/consts";
 
@@ -23,8 +24,13 @@ ChartJS.register(
 	Title,
 	LineElement
 );
+interface IncomeExpenseLineChartProps {
+	data: ChartData<"line", (number | Point | null)[], unknown> | any;
+}
 
-const IncomeExpenseLineChart = ({ data }: { data: ChartData<"line"> }) => {
+const IncomeExpenseLineChart: React.FC<IncomeExpenseLineChartProps> = ({
+	data
+}) => {
 	return (
 		<div style={{ minHeight: "30vh" }}>
 			<div className="p-12 h-90 block bg-slate-400 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
